@@ -2,10 +2,10 @@
 
 Name:           %{target}-gcc
 Version:        4.1.2
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        Cross Compiling GNU GCC targeted at %{target}
 Group:          Development/Languages
-License:        GPL
+License:        GPLv2+
 URL:            http://gcc.gnu.org/
 Source0:        ftp://ftp.gnu.org/gnu/gcc/gcc-%{version}/gcc-core-%{version}.tar.bz2
 Source1:        ftp://ftp.gnu.org/gnu/gcc/gcc-%{version}/gcc-g++-%{version}.tar.bz2
@@ -122,6 +122,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Fri Aug  3 2007 Hans de Goede <j.w.r.degoede@hhs.nl> 4.1.2-5
+- Update License tag for new Licensing Guidelines compliance
+
 * Sun May 20 2007 Hans de Goede <j.w.r.degoede@hhs.nl> 4.1.2-4
 - Honor and use $RPM_OPT_FLAGS
 - define VERSUFFIX to Fedora version-release, so that people can tell this is
