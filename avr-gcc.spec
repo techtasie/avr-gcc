@@ -13,7 +13,7 @@ Source2:        README.fedora
 Patch0:         avr-gcc-4.1.2-newdevices.patch
 Patch1:         avr-gcc-4.1.2-attribute_alias.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-%(%{__id_u} -n)
-BuildRequires:  %{target}-binutils >= 2.13, zlib-devel
+BuildRequires:  %{target}-binutils >= 2.13, zlib-devel gawk
 Requires:       %{target}-binutils >= 2.13
 
 %description
