@@ -2,7 +2,7 @@
 
 Name:           %{target}-gcc
 Version:        4.1.2
-Release:        5%{?dist}
+Release:        6%{?dist}
 Summary:        Cross Compiling GNU GCC targeted at %{target}
 Group:          Development/Languages
 License:        GPLv2+
@@ -122,6 +122,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Tue Feb 19 2008 Fedora Release Engineering <rel-eng@fedoraproject.org> - 4.1.2-6
+- Autorebuild for GCC 4.3
+
 * Fri Aug  3 2007 Hans de Goede <j.w.r.degoede@hhs.nl> 4.1.2-5
 - Update License tag for new Licensing Guidelines compliance
 
