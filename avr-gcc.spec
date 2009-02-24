@@ -2,7 +2,7 @@
 
 Name:           %{target}-gcc
 Version:        4.3.3
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Cross Compiling GNU GCC targeted at %{target}
 Group:          Development/Languages
 License:        GPLv2+
@@ -122,6 +122,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Mon Feb 23 2009 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 4.3.3-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_11_Mass_Rebuild
+
 * Sat Feb 14 2009 Thibault North <tnorth AT fedoraproject DOT org> - 4.3.3-1
 - New upstream release: upgraded to 4.3.3
 - Add dependencies to gmp-devel and mpfr-devel as build requires
