@@ -2,7 +2,7 @@
 
 Name:           %{target}-gcc
 Version:        4.6.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Cross Compiling GNU GCC targeted at %{target}
 Group:          Development/Languages
 License:        GPLv2+
@@ -10,8 +10,8 @@ URL:            http://gcc.gnu.org/
 Source0:        ftp://ftp.gnu.org/gnu/gcc/gcc-%{version}/gcc-core-%{version}.tar.bz2
 Source1:        ftp://ftp.gnu.org/gnu/gcc/gcc-%{version}/gcc-g++-%{version}.tar.bz2
 Source2:        README.fedora
-#Patch0:         avr-gcc-4.5.1-register-fix.patch
-Patch1:         avr-gcc-4.5.3-mint8.patch
+
+Patch0:         avr-gcc-4.5.3-mint8.patch
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-%(%{__id_u} -n)
 BuildRequires:  %{target}-binutils >= 2.13, zlib-devel gawk gmp-devel mpfr-devel libmpc-devel
@@ -38,8 +38,7 @@ platform.
 %setup -q -c -a 1
 pushd gcc-%{version}
 
-#%patch0 -p1
-%patch1 -p0
+%patch0 -p0
 
 contrib/gcc_update --touch
 popd
@@ -125,6 +124,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Wed Aug 31 2011 Thibault North <tnorth@fedoraproject.org> - 4.6.1-2
+- Small cleanup
+
 * Wed Aug 31 2011 Thibault North <tnorth@fedoraproject.org> - 4.6.1-1
 - Updated to 4.6.1
 
