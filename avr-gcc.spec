@@ -2,7 +2,7 @@
 
 Name:           %{target}-gcc
 Version:        4.6.1
-Release:        2%{?dist}.1
+Release:        3%{?dist}
 Summary:        Cross Compiling GNU GCC targeted at %{target}
 Group:          Development/Languages
 License:        GPLv2+
@@ -12,6 +12,7 @@ Source1:        ftp://ftp.gnu.org/gnu/gcc/gcc-%{version}/gcc-g++-%{version}.tar.
 Source2:        README.fedora
 
 Patch0:         avr-gcc-4.5.3-mint8.patch
+Patch1:         avr-gcc-4.6.1-progmem.patch
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-%(%{__id_u} -n)
 BuildRequires:  %{target}-binutils >= 2.13, zlib-devel gawk gmp-devel mpfr-devel libmpc-devel
@@ -39,6 +40,7 @@ platform.
 pushd gcc-%{version}
 
 %patch0 -p0
+%patch1 -p0
 
 contrib/gcc_update --touch
 popd
@@ -124,6 +126,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Sat Oct 15 2011 Thibault North <tnorth@fedoraproject.org> - 4.6.1-3
+- Fix BZ#737950 thanks Jan Wildeboer
+
 * Mon Oct 10 2011 Peter Schiffer <pschiffe@redhat.com> - 4.6.1-2.1
 - rebuild with new gmp
 
