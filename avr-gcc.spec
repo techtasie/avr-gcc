@@ -2,7 +2,7 @@
 
 Name:           %{target}-gcc
 Version:        4.6.1
-Release:        3%{?dist}
+Release:        3%{?dist}.1
 Summary:        Cross Compiling GNU GCC targeted at %{target}
 Group:          Development/Languages
 License:        GPLv2+
@@ -126,6 +126,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Thu Oct 20 2011 Marcela Mašláňová <mmaslano@redhat.com> - 4.6.1-3.1
+- rebuild with new gmp without compat lib
+
 * Sat Oct 15 2011 Thibault North <tnorth@fedoraproject.org> - 4.6.1-3
 - Fix BZ#737950 thanks Jan Wildeboer
 
