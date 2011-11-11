@@ -2,7 +2,7 @@
 
 Name:           %{target}-gcc
 Version:        4.6.1
-Release:        3%{?dist}.1
+Release:        4%{?dist}
 Summary:        Cross Compiling GNU GCC targeted at %{target}
 Group:          Development/Languages
 License:        GPLv2+
@@ -15,8 +15,8 @@ Patch0:         avr-gcc-4.5.3-mint8.patch
 Patch1:         avr-gcc-4.6.1-progmem.patch
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-%(%{__id_u} -n)
-BuildRequires:  %{target}-binutils >= 2.13, zlib-devel gawk gmp-devel mpfr-devel libmpc-devel
-Requires:       %{target}-binutils >= 2.13
+BuildRequires:  %{target}-binutils >= 1:2.20, zlib-devel gawk gmp-devel mpfr-devel libmpc-devel
+Requires:       %{target}-binutils >= 1:2.20
 
 %description
 This is a Cross Compiling version of GNU GCC, which can be used to
@@ -126,6 +126,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Fri Nov 11 2011 Thibault North <tnorth@fedoraproject.org> - 4.6.1-4
+- Rebuild with avr-binutils downgrade
+
 * Thu Oct 20 2011 Marcela Mašláňová <mmaslano@redhat.com> - 4.6.1-3.1
 - rebuild with new gmp without compat lib
 
