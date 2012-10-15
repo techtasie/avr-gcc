@@ -2,7 +2,7 @@
 
 Name:           %{target}-gcc
 Version:        4.6.3
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Cross Compiling GNU GCC targeted at %{target}
 Group:          Development/Languages
 License:        GPLv2+
@@ -16,6 +16,7 @@ Patch0:         avr-gcc-4.5.3-mint8.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-%(%{__id_u} -n)
 BuildRequires:  %{target}-binutils >= 1:2.20, zlib-devel gawk gmp-devel mpfr-devel libmpc-devel
 Requires:       %{target}-binutils >= 1:2.20
+Provides: bundled(libiberty)
 
 %description
 This is a Cross Compiling version of GNU GCC, which can be used to
@@ -124,6 +125,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Mon Oct 15 2012 Jon Ciesla <limburgher@gmail.com> - 4.6.3-3
+- Provides: bundled(libiberty)
+
 * Wed Jul 18 2012 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 4.6.3-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_18_Mass_Rebuild
 
