@@ -2,7 +2,7 @@
 
 Name:           %{target}-gcc
 Version:        4.7.3
-Release:        0.1%{?dist}
+Release:        1%{?dist}
 Summary:        Cross Compiling GNU GCC targeted at %{target}
 Group:          Development/Languages
 License:        GPLv2+
@@ -15,6 +15,8 @@ Patch1: 	avr-gcc-4.7.2-texfix.patch
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-%(%{__id_u} -n)
 BuildRequires:  %{target}-binutils >= 1:2.23, zlib-devel gawk gmp-devel mpfr-devel libmpc-devel, flex
+#for autoreconf:
+BuildRequires:  gettext-devel autoconf automake
 Requires:       %{target}-binutils >= 1:2.23
 Provides:       bundled(libiberty)
 
@@ -69,6 +71,12 @@ sed -e 's,^[ ]*/usr/lib/rpm.*/brp-strip,./brp-strip,' \
 
 
 %build
+pushd gcc-%{version}
+acv=$(autoreconf --version | head -n1)
+acv=${acv##* }
+sed -i "/_GCC_AUTOCONF_VERSION/s/2.64/$acv/" config/override.m4
+autoreconf -fiv
+popd
 mkdir -p gcc-%{target}
 pushd gcc-%{target}
 CC="%{__cc} ${RPM_OPT_FLAGS}" \
@@ -127,6 +135,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Fri Apr 19 2013 Michal Hlavinka <mhlavink@redhat.com> - 4.7.3-1
+- fix aarch64 support (#925063)
+
 * Fri Feb 22 2013 Michal Hlavinka <mhlavink@redhat.com> - 4.7.3-0.1
 - fix FTBS: incompatible changes in TeX
 - updated to 4.7.3 pre-release
