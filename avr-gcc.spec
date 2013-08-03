@@ -2,7 +2,7 @@
 
 Name:           %{target}-gcc
 Version:        4.8.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Cross Compiling GNU GCC targeted at %{target}
 Group:          Development/Languages
 License:        GPLv2+
@@ -133,6 +133,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Sat Aug 03 2013 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 4.8.1-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_20_Mass_Rebuild
+
 * Mon Jun 24 2013 Michal Hlavinka <mhlavink@redhat.com> - 4.8.1-1
 - updated to 4.8.1
 
