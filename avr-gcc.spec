@@ -270,5 +270,5 @@ rm -rf $RPM_BUILD_ROOT
 * Wed Apr 25 2007 Lennart Kneppers <lennartkneppers@gmail.com> 4.1.2-2
 - Minor changes
 
-* Thu Apr 20 2007 Koos Termeulen <koostermeulen@gmail.com> 4.1.2-1
+* Fri Apr 20 2007 Koos Termeulen <koostermeulen@gmail.com> 4.1.2-1
 - Initial release
