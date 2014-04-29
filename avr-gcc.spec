@@ -1,8 +1,8 @@
 %define target avr
 
 Name:           %{target}-gcc
-Version:        4.8.2
-Release:        2%{?dist}
+Version:        4.9.0
+Release:        1%{?dist}
 Summary:        Cross Compiling GNU GCC targeted at %{target}
 Group:          Development/Languages
 License:        GPLv2+
@@ -43,7 +43,6 @@ platform.
 
 pushd gcc-%{version}
 %patch0 -p0
-%patch1 -p2 -b .misspelled
 
 contrib/gcc_update --touch
 popd
@@ -99,7 +98,7 @@ popd
 # we don't want these as we are a cross version
 rm -r $RPM_BUILD_ROOT%{_infodir}
 rm -r $RPM_BUILD_ROOT%{_mandir}/man7
-rm    $RPM_BUILD_ROOT%{_libdir}/libiberty.a
+rm    $RPM_BUILD_ROOT%{_libdir}/libiberty.a ||:
 # and these aren't usefull for embedded targets
 rm -r $RPM_BUILD_ROOT/usr/lib/gcc/%{target}/%{version}/install-tools ||:
 rm -r $RPM_BUILD_ROOT%{_libexecdir}/gcc/%{target}/%{version}/install-tools ||:
@@ -135,6 +134,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Tue Apr 29 2014 Michal Hlavinka <mhlavink@redhat.com> - 4.9.0-1
+- updated to 4.9.0
+
 * Wed Mar 05 2014 Michal Hlavinka <mhlavink@redhat.com> - 4.8.2-2
 - silent false positive warnings about misspelled __vector_NN
 
