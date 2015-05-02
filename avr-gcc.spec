@@ -2,7 +2,7 @@
 
 Name:           %{target}-gcc
 Version:        4.9.2
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Cross Compiling GNU GCC targeted at %{target}
 Group:          Development/Languages
 License:        GPLv2+
@@ -133,6 +133,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Sat May 02 2015 Kalev Lember <kalevlember@gmail.com> - 4.9.2-2
+- Rebuilt for GCC 5 C++11 ABI change
+
 * Thu Oct 30 2014 Michal Hlavinka <mhlavink@redhat.com> - 4.9.2-1
 - updated to 4.9.2
 
