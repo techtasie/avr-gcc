@@ -134,6 +134,12 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Mon May 25 2015 Michal Hlavinka <mhlavink@redhat.com> - 5.1.0-1
+- updated to 5.1.0
+
+* Sat May 02 2015 Kalev Lember <kalevlember@gmail.com> - 4.9.2-2
+- Rebuilt for GCC 5 C++11 ABI change
+
 * Thu Oct 30 2014 Michal Hlavinka <mhlavink@redhat.com> - 4.9.2-1
 - updated to 4.9.2
 
