@@ -1,7 +1,7 @@
 %define target avr
 
 Name:           %{target}-gcc
-Version:        4.9.2
+Version:        5.1.0
 Release:        1%{?dist}
 Summary:        Cross Compiling GNU GCC targeted at %{target}
 Group:          Development/Languages
@@ -98,6 +98,7 @@ popd
 rm -r $RPM_BUILD_ROOT%{_infodir}
 rm -r $RPM_BUILD_ROOT%{_mandir}/man7
 rm    $RPM_BUILD_ROOT%{_libdir}/libiberty.a ||:
+rm    $RPM_BUILD_ROOT%{_libdir}/libcc1* ||:
 # and these aren't usefull for embedded targets
 rm -r $RPM_BUILD_ROOT/usr/lib/gcc/%{target}/%{version}/install-tools ||:
 rm -r $RPM_BUILD_ROOT%{_libexecdir}/gcc/%{target}/%{version}/install-tools ||:
