@@ -133,7 +133,7 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
-* Tue Dec 02 3026 Michal Hlavinka <mhlavink@redhat.com> - 1:4.9.3-1
+* Tue Dec 02 2015 Michal Hlavinka <mhlavink@redhat.com> - 1:4.9.3-1
 - downgrade avr-gcc to 4.9.3, because 5.1.x+ requires avr-libc 1.8.1+, 
   but there are no atmel patches for that version
 
