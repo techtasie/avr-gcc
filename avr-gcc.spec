@@ -2,7 +2,7 @@
 
 Name:           %{target}-gcc
 Version:        6.3.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Epoch:          1
 Summary:        Cross Compiling GNU GCC targeted at %{target}
 Group:          Development/Languages
@@ -135,6 +135,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Wed Jul 26 2017 Fedora Release Engineering <releng@fedoraproject.org> - 1:6.3.0-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_27_Mass_Rebuild
+
 * Thu Mar 09 2017 Michal Hlavinka <mhlavink@redhat.com> - 1:6.3.0-1
 - updated to 6.3.0
 
