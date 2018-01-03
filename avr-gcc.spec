@@ -1,18 +1,17 @@
 %define target avr
 
 Name:           %{target}-gcc
-Version:        6.3.0
-Release:        3%{?dist}
+Version:        7.2.0
+Release:        1%{?dist}
 Epoch:          1
 Summary:        Cross Compiling GNU GCC targeted at %{target}
 Group:          Development/Languages
 License:        GPLv2+
 URL:            http://gcc.gnu.org/
-Source0:        ftp://ftp.gnu.org/gnu/gcc/gcc-%{version}/gcc-%{version}.tar.bz2
+Source0:        ftp://ftp.gnu.org/gnu/gcc/gcc-%{version}/gcc-%{version}.tar.xz
 Source2:        README.fedora
 
 Patch0:         avr-gcc-4.5.3-mint8.patch
-Patch1: avr-gcc-6.3-compile7.patch
 
 BuildRequires:  %{target}-binutils >= 1:2.23, zlib-devel gawk gmp-devel mpfr-devel libmpc-devel, flex
 #for autoreconf:
@@ -43,7 +42,6 @@ platform.
 
 pushd gcc-%{version}
 %patch0 -p0
-%patch1 -p2 -b .compile7
 
 contrib/gcc_update --touch
 popd
@@ -135,6 +133,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Wed Jan  3 2018 Tom Callaway <spot@fedoraproject.org> - 1:7.2.0-1
+- update to 7.2.0
+
 * Wed Aug 02 2017 Fedora Release Engineering <releng@fedoraproject.org> - 1:6.3.0-3
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_27_Binutils_Mass_Rebuild
 
