@@ -13,6 +13,7 @@ Source2:        README.fedora
 
 Patch0:         avr-gcc-4.5.3-mint8.patch
 
+BuildRequires:  gcc-c++
 BuildRequires:  %{target}-binutils >= 1:2.23, zlib-devel gawk gmp-devel mpfr-devel libmpc-devel, flex
 #for autoreconf:
 BuildRequires:  gettext-devel autoconf automake
