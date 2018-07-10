@@ -108,7 +108,6 @@ rm -r $RPM_BUILD_ROOT%{_libexecdir}/gcc/%{target}/%{version}/install-tools ||:
 
 
 %files
-%defattr(-,root,root,-)
 %doc gcc-%{version}/COPYING gcc-%{version}/COPYING.LIB
 %doc gcc-%{version}/README README.fedora
 %{_bindir}/%{target}-*
@@ -124,7 +123,6 @@ rm -r $RPM_BUILD_ROOT%{_libexecdir}/gcc/%{target}/%{version}/install-tools ||:
 %exclude %{_mandir}/man1/%{target}-g++.1.gz
 
 %files c++
-%defattr(-,root,root,-)
 %{_bindir}/%{target}-?++
 %{_libexecdir}/gcc/%{target}/%{version}/cc1plus
 %{_mandir}/man1/%{target}-g++.1.gz
