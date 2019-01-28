@@ -5,7 +5,6 @@ Version:        7.2.0
 Release:        3%{?dist}
 Epoch:          1
 Summary:        Cross Compiling GNU GCC targeted at %{target}
-Group:          Development/Languages
 License:        GPLv2+
 URL:            http://gcc.gnu.org/
 Source0:        ftp://ftp.gnu.org/gnu/gcc/gcc-%{version}/gcc-%{version}.tar.xz
@@ -28,7 +27,6 @@ native %{_arch} platform.
 
 %package c++
 Summary:        Cross Compiling GNU GCC targeted at %{target}
-Group:          Development/Languages
 Requires:       %{name} = %{epoch}:%{version}-%{release}
 
 %description c++
