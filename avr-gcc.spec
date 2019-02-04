@@ -1,8 +1,8 @@
 %define target avr
 
 Name:           %{target}-gcc
-Version:        7.2.0
-Release:        4%{?dist}
+Version:        7.4.0
+Release:        5%{?dist}
 Epoch:          1
 Summary:        Cross Compiling GNU GCC targeted at %{target}
 License:        GPLv2+
@@ -88,7 +88,6 @@ popd
 
 
 %install
-rm -rf $RPM_BUILD_ROOT
 pushd gcc-%{target}
 make install DESTDIR=$RPM_BUILD_ROOT
 popd
@@ -106,7 +105,7 @@ rm -r $RPM_BUILD_ROOT%{_libexecdir}/gcc/%{target}/%{version}/install-tools ||:
 
 
 %files
-%doc gcc-%{version}/COPYING gcc-%{version}/COPYING.LIB
+%license gcc-%{version}/COPYING gcc-%{version}/COPYING.LIB
 %doc gcc-%{version}/README README.fedora
 %{_bindir}/%{target}-*
 %dir /usr/lib/gcc
@@ -127,6 +126,9 @@ rm -r $RPM_BUILD_ROOT%{_libexecdir}/gcc/%{target}/%{version}/install-tools ||:
 
 
 %changelog
+* Mon Feb 04 2019 Michal Hlavinka <mhlavink@redhat.com> - 1:7.4.0-5
+- update to 7.4.0
+
 * Thu Jan 31 2019 Fedora Release Engineering <releng@fedoraproject.org> - 1:7.2.0-4
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_30_Mass_Rebuild
 
