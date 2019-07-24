@@ -2,7 +2,7 @@
 
 Name:           %{target}-gcc
 Version:        7.4.0
-Release:        5%{?dist}
+Release:        6%{?dist}
 Epoch:          1
 Summary:        Cross Compiling GNU GCC targeted at %{target}
 License:        GPLv2+
@@ -126,6 +126,9 @@ rm -r $RPM_BUILD_ROOT%{_libexecdir}/gcc/%{target}/%{version}/install-tools ||:
 
 
 %changelog
+* Wed Jul 24 2019 Fedora Release Engineering <releng@fedoraproject.org> - 1:7.4.0-6
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_31_Mass_Rebuild
+
 * Mon Feb 04 2019 Michal Hlavinka <mhlavink@redhat.com> - 1:7.4.0-5
 - update to 7.4.0
 
