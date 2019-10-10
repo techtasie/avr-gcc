@@ -2,7 +2,7 @@
 
 Name:           %{target}-gcc
 Version:        9.2.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Epoch:          1
 Summary:        Cross Compiling GNU GCC targeted at %{target}
 License:        GPLv2+
@@ -126,6 +126,9 @@ rm -r $RPM_BUILD_ROOT%{_libexecdir}/gcc/%{target}/%{version}/install-tools ||:
 
 
 %changelog
+* Wed Oct  9 2019 Jerry James <loganjerry@gmail.com> - 1:9.2.0-2
+- Rebuild for mpfr 4
+
 * Wed Aug 21 2019 Michal Hlavinka <mhlavink@redhat.com> - 1:9.2.0-1
 - gcc updated to 9.2.0
 
