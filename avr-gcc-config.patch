@@ -1,0 +1,19 @@
+diff --git a/gcc-9.2.0/config/intdiv0.m4 b/gcc-9.2.0/config/intdiv0.m4
+index 55dddcf1c..ba906efca 100644
+--- a/gcc-9.2.0/config/intdiv0.m4
++++ b/gcc-9.2.0/config/intdiv0.m4
+@@ -31,10 +31,10 @@ sigfpe_handler (sig) int sig;
+   exit (sig != SIGFPE);
+ }
+ 
+-int x = 1;
+-int y = 0;
+-int z;
+-int nan;
++volatile int x = 1;
++volatile int y = 0;
++volatile int z;
++volatile int nan;
+ 
+ int main ()
+ {
