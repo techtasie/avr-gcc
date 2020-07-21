@@ -2,7 +2,7 @@
 
 Name:           %{target}-gcc
 Version:        9.2.0
-Release:        4%{?dist}
+Release:        5%{?dist}
 Epoch:          1
 Summary:        Cross Compiling GNU GCC targeted at %{target}
 License:        GPLv2+
@@ -43,6 +43,13 @@ platform.
 pushd gcc-%{version}
 %patch0 -p2 -b .mint8
 %patch1 -p2 -b .config
+
+pushd libiberty
+autoconf -f
+popd
+pushd intl
+autoconf -f
+popd
 
 contrib/gcc_update --touch
 popd
@@ -131,6 +138,9 @@ rm -r $RPM_BUILD_ROOT%{_libexecdir}/gcc/%{target}/%{version}/install-tools ||:
 
 
 %changelog
+* Mon Jul 20 2020 Jeff Law <law@redhat.com> - 1:9.2.0-5
+- Fix more broken configure tests compromised by LTO
+
 * Tue Jun 30 2020 Jeff Law <law@redhat.com> - 1:9.2.0-4
 - Fix broken configure test compromised by LTO
 
