@@ -2,7 +2,7 @@
 
 Name:           %{target}-gcc
 Version:        10.2.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Epoch:          1
 Summary:        Cross Compiling GNU GCC targeted at %{target}
 License:        GPLv2+
@@ -139,6 +139,9 @@ rm -r $RPM_BUILD_ROOT%{_libexecdir}/gcc/%{target}/%{version}/install-tools ||:
 
 
 %changelog
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1:10.2.0-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
 * Mon Nov 09 2020 Michal Hlavinka <mhlavink@redhat.com> - 1:10.2.0-1
 - updated to 10.2.0
 
