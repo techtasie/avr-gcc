@@ -1,8 +1,8 @@
 %define target avr
 
 Name:           %{target}-gcc
-Version:        10.2.0
-Release:        3%{?dist}
+Version:        11.1.0
+Release:        1%{?dist}
 Epoch:          1
 Summary:        Cross Compiling GNU GCC targeted at %{target}
 License:        GPLv2+
@@ -140,6 +140,9 @@ rm -r $RPM_BUILD_ROOT%{_libexecdir}/gcc/%{target}/%{version}/install-tools ||:
 
 
 %changelog
+* Tue May 04 2021 Michal Hlavinka <mhlavink@redhat.com> - 1:11.1.0-1
+- updated to 11.1.0
+
 * Sun Apr 11 2021 Michal Hlavinka <mhlavink@redhat.com> - 1:10.2.0-3
 - add explicit requirement for autoconf 2.69
 
