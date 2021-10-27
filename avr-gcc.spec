@@ -17,7 +17,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  %{target}-binutils >= 1:2.23, zlib-devel gawk gmp-devel mpfr-devel libmpc-devel, flex
 #for autoreconf:
 BuildRequires:  gettext-devel automake
-BuildRequires:  autoconf = 2.69
+#BuildRequires:  autoconf = 2.69
 BuildRequires: make
 Requires:       %{target}-binutils >= 1:2.23
 Provides:       bundled(libiberty)
@@ -47,10 +47,10 @@ pushd gcc-%{version}
 %patch1 -p2 -b .config
 
 pushd libiberty
-autoconf -f
+#autoconf -f
 popd
 pushd intl
-autoconf -f
+#autoconf -f
 popd
 
 contrib/gcc_update --touch
@@ -83,9 +83,9 @@ pushd gcc-%{version}
 acv=$(autoreconf --version | head -n1)
 acv=${acv##* }
 sed -i "/_GCC_AUTOCONF_VERSION/s/2.64/$acv/" config/override.m4
-autoreconf -fiv
+#autoreconf -fiv
 pushd intl
-autoreconf -ivf
+#autoreconf -ivf
 popd
 popd
 mkdir -p gcc-%{target}
