@@ -2,7 +2,7 @@
 
 Name:           %{target}-gcc
 Version:        11.1.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 Epoch:          1
 Summary:        Cross Compiling GNU GCC targeted at %{target}
 License:        GPLv2+
@@ -140,6 +140,9 @@ rm -r $RPM_BUILD_ROOT%{_libexecdir}/gcc/%{target}/%{version}/install-tools ||:
 
 
 %changelog
+* Wed Jan 19 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1:11.1.0-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
 * Wed Jul 21 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1:11.1.0-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
 
