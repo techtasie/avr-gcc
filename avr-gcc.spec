@@ -1,8 +1,10 @@
 %define target avr
 
 Name:           %{target}-gcc
-Version:        11.1.0
-Release:        3%{?dist}
+#FIXME:11.2 fails with Werror-format-security https://gcc.gnu.org/bugzilla/show_bug.cgi?id=100431
+#revert -Wno-format-security once fix is available
+Version:        11.2.0
+Release:        1%{?dist}
 Epoch:          1
 Summary:        Cross Compiling GNU GCC targeted at %{target}
 License:        GPLv2+
@@ -90,13 +92,17 @@ popd
 popd
 mkdir -p gcc-%{target}
 pushd gcc-%{target}
-CC="%{__cc} ${RPM_OPT_FLAGS} -fno-stack-protector" \
+FILTERED_RPM_OPT_FLAGS=$(echo "${RPM_OPT_FLAGS}" | sed 's/Werror=format-security/Wno-format-security/g')
+export CFLAGS=$FILTERED_RPM_OPT_FLAGS
+export CXXFLAGS=$FILTERED_RPM_OPT_FLAGS
+CC="%{__cc} ${FILTERED_RPM_OPT_FLAGS} -fno-stack-protector" \
 ../gcc-%{version}/configure --prefix=%{_prefix} --mandir=%{_mandir} \
   --infodir=%{_infodir} --target=%{target} --enable-languages=c,c++ \
   --disable-nls --disable-libssp --with-system-zlib \
   --enable-version-specific-runtime-libs \
   --with-pkgversion="Fedora %{version}-%{release}" \
   --with-bugurl="https://bugzilla.redhat.com/"
+
 make
 popd
 
@@ -140,6 +146,9 @@ rm -r $RPM_BUILD_ROOT%{_libexecdir}/gcc/%{target}/%{version}/install-tools ||:
 
 
 %changelog
+* Tue Feb 01 2022 Michal Hlavinka <mhlavink@redhat.com> - 1:11.2.0-1
+- updated to 11.2.0
+
 * Wed Jan 19 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1:11.1.0-3
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
 
