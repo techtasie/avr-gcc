@@ -3,13 +3,13 @@
 Name:           %{target}-gcc
 #FIXME:11.2 fails with Werror-format-security https://gcc.gnu.org/bugzilla/show_bug.cgi?id=100431
 #revert -Wno-format-security once fix is available
-Version:        11.2.0
+Version:        11.3.0
 Release:        1%{?dist}
 Epoch:          1
 Summary:        Cross Compiling GNU GCC targeted at %{target}
 License:        GPLv2+
 URL:            http://gcc.gnu.org/
-Source0:        ftp://ftp.gnu.org/gnu/gcc/gcc-%{version}/gcc-%{version}.tar.xz
+Source0:        http://ftp.gnu.org/gnu/gcc/gcc-%{version}/gcc-%{version}.tar.xz
 Source2:        README.fedora
 
 Patch0:         avr-gcc-4.5.3-mint8.patch
@@ -146,6 +146,9 @@ rm -r $RPM_BUILD_ROOT%{_libexecdir}/gcc/%{target}/%{version}/install-tools ||:
 
 
 %changelog
+* Wed Jun 01 2022 Michal Hlavinka <mhlavink@redhat.com> - 1:11.3.0-1
+- updated to 11.3.0
+
 * Tue Feb 01 2022 Michal Hlavinka <mhlavink@redhat.com> - 1:11.2.0-1
 - updated to 11.2.0
 
