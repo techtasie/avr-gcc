@@ -3,7 +3,7 @@
 Name:           %{target}-gcc
 #FIXME:11.2 fails with Werror-format-security https://gcc.gnu.org/bugzilla/show_bug.cgi?id=100431
 #revert -Wno-format-security once fix is available
-Version:        11.3.0
+Version:        12.1.0
 Release:        1%{?dist}
 Epoch:          1
 Summary:        Cross Compiling GNU GCC targeted at %{target}
@@ -46,7 +46,7 @@ platform.
 
 pushd gcc-%{version}
 %patch0 -p2 -b .mint8
-%patch1 -p2 -b .config
+#patch1 -p2 -b .config
 
 pushd libiberty
 #autoconf -f
@@ -146,6 +146,9 @@ rm -r $RPM_BUILD_ROOT%{_libexecdir}/gcc/%{target}/%{version}/install-tools ||:
 
 
 %changelog
+* Tue Jun 21 2022 Michal Hlavinka <mhlavink@redhat.com> - 1:12.1.0-1
+- updated to 12.1.0
+
 * Wed Jun 01 2022 Michal Hlavinka <mhlavink@redhat.com> - 1:11.3.0-1
 - updated to 11.3.0
 
