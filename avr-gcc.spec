@@ -3,8 +3,8 @@
 Name:           %{target}-gcc
 #FIXME:11.2 fails with Werror-format-security https://gcc.gnu.org/bugzilla/show_bug.cgi?id=100431
 #revert -Wno-format-security once fix is available
-Version:        12.1.0
-Release:        2%{?dist}
+Version:        12.2.0
+Release:        1%{?dist}
 Epoch:          1
 Summary:        Cross Compiling GNU GCC targeted at %{target}
 License:        GPLv2+
@@ -146,6 +146,9 @@ rm -r $RPM_BUILD_ROOT%{_libexecdir}/gcc/%{target}/%{version}/install-tools ||:
 
 
 %changelog
+* Mon Aug 29 2022 Michal Hlavinka <mhlavink@redhat.com> - 1:12.2.0-1
+- updated to 12.2.0
+
 * Wed Jul 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1:12.1.0-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
 
