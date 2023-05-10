@@ -4,10 +4,10 @@ Name:           %{target}-gcc
 #FIXME:11.2 fails with Werror-format-security https://gcc.gnu.org/bugzilla/show_bug.cgi?id=100431
 #revert -Wno-format-security once fix is available
 Version:        12.3.0
-Release:        1%{?dist}
+Release:        6%{?dist}
 Epoch:          1
 Summary:        Cross Compiling GNU GCC targeted at %{target}
-License:        GPLv2+
+License:        GPL-2.0-or-later AND GPL-3.0-or-later AND LGPL-2.0-or-later AND MIT AND BSD-2-Clause
 URL:            http://gcc.gnu.org/
 Source0:        http://ftp.gnu.org/gnu/gcc/gcc-%{version}/gcc-%{version}.tar.xz
 Source2:        README.fedora
@@ -146,6 +146,9 @@ rm -r $RPM_BUILD_ROOT%{_libexecdir}/gcc/%{target}/%{version}/install-tools ||:
 
 
 %changelog
+* Wed May 10 2023 Michal Hlavinka <mhlavink@redhat.com> - 1:12.3.0-6
+- update license tag format (SPDX migration) for https://fedoraproject.org/wiki/Changes/SPDX_Licenses_Phase_1
+
 * Wed May 10 2023 Michal Hlavinka <mhlavink@redhat.com> - 1:12.3.0-1
 - updated to 12.3.0
 
