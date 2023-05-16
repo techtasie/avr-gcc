@@ -9,7 +9,7 @@ Epoch:          1
 Summary:        Cross Compiling GNU GCC targeted at %{target}
 License:        GPL-2.0-or-later AND GPL-3.0-or-later AND LGPL-2.0-or-later AND MIT AND BSD-2-Clause
 URL:            http://gcc.gnu.org/
-Source0:        http://ftp.gnu.org/gnu/gcc/gcc-%{version}/gcc-%{version}.tar.xz
+Source0:        gcc-13.1.0.tar.xz
 Source2:        README.fedora
 
 Patch0:         avr-gcc-4.5.3-mint8.patch
