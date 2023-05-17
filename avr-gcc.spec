@@ -4,7 +4,7 @@ Name:           %{target}-gcc
 #FIXME:11.2 fails with Werror-format-security https://gcc.gnu.org/bugzilla/show_bug.cgi?id=100431
 #revert -Wno-format-security once fix is available
 Version:        12.1.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Epoch:          1
 Summary:        Cross Compiling GNU GCC targeted at %{target}
 License:        GPLv2+
@@ -14,6 +14,7 @@ Source2:        README.fedora
 
 Patch0:         avr-gcc-4.5.3-mint8.patch
 Patch1:		avr-gcc-config.patch
+Patch2:		avr-config.patch
 
 BuildRequires:  gcc-c++
 BuildRequires:  %{target}-binutils >= 1:2.23, zlib-devel gawk gmp-devel mpfr-devel libmpc-devel, flex
@@ -45,8 +46,9 @@ platform.
 [ -d gcc-%{version} ] || mv gcc-4.7-* gcc-%{version}
 
 pushd gcc-%{version}
-%patch0 -p2 -b .mint8
+%patch 0 -p2 -b .mint8
 #patch1 -p2 -b .config
+%patch 2 -p2
 
 pushd libiberty
 #autoconf -f
