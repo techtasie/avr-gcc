@@ -4,17 +4,16 @@ Name:           %{target}-gcc
 #FIXME:11.2 fails with Werror-format-security https://gcc.gnu.org/bugzilla/show_bug.cgi?id=100431
 #revert -Wno-format-security once fix is available
 Version:        12.1.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 Epoch:          1
 Summary:        Cross Compiling GNU GCC targeted at %{target}
 License:        GPLv2+
 URL:            http://gcc.gnu.org/
-Source0:        http://ftp.gnu.org/gnu/gcc/gcc-%{version}/gcc-%{version}.tar.xz
+Source0:        gcc.tar.xz
 Source2:        README.fedora
 
 Patch0:         avr-gcc-4.5.3-mint8.patch
 Patch1:		avr-gcc-config.patch
-Patch2:		avr-config.patch
 
 BuildRequires:  gcc-c++
 BuildRequires:  %{target}-binutils >= 1:2.23, zlib-devel gawk gmp-devel mpfr-devel libmpc-devel, flex
@@ -43,12 +42,11 @@ platform.
 
 %prep
 %setup -q -c
-[ -d gcc-%{version} ] || mv gcc-4.7-* gcc-%{version}
+[ -d gcc ] || mv gcc-4.7-* gcc
 
-pushd gcc-%{version}
+pushd gcc
 %patch 0 -p2 -b .mint8
 #patch1 -p2 -b .config
-%patch 2 -p2
 
 pushd libiberty
 #autoconf -f
@@ -83,7 +81,7 @@ sed -e 's,^[ ]*/usr/lib/rpm.*/brp-strip,./brp-strip,' \
 
 
 %build
-pushd gcc-%{version}
+pushd gcc
 acv=$(autoreconf --version | head -n1)
 acv=${acv##* }
 sed -i "/_GCC_AUTOCONF_VERSION/s/2.64/$acv/" config/override.m4
@@ -92,13 +90,13 @@ pushd intl
 #autoreconf -ivf
 popd
 popd
-mkdir -p gcc-%{target}
-pushd gcc-%{target}
+mkdir -p gcc
+pushd gcc
 FILTERED_RPM_OPT_FLAGS=$(echo "${RPM_OPT_FLAGS}" | sed 's/Werror=format-security/Wno-format-security/g')
 export CFLAGS=$FILTERED_RPM_OPT_FLAGS
 export CXXFLAGS=$FILTERED_RPM_OPT_FLAGS
 CC="%{__cc} ${FILTERED_RPM_OPT_FLAGS} -fno-stack-protector" \
-../gcc-%{version}/configure --prefix=%{_prefix} --mandir=%{_mandir} \
+../gcc/configure --prefix=%{_prefix} --mandir=%{_mandir} \
   --infodir=%{_infodir} --target=%{target} --enable-languages=c,c++ \
   --disable-nls --disable-libssp --with-system-zlib \
   --enable-version-specific-runtime-libs \
@@ -110,7 +108,7 @@ popd
 
 
 %install
-pushd gcc-%{target}
+pushd gcc
 make install DESTDIR=$RPM_BUILD_ROOT
 popd
 # we don't want these as we are a cross version
@@ -127,8 +125,8 @@ rm -r $RPM_BUILD_ROOT%{_libexecdir}/gcc/%{target}/%{version}/install-tools ||:
 
 
 %files
-%license gcc-%{version}/COPYING gcc-%{version}/COPYING.LIB
-%doc gcc-%{version}/README README.fedora
+%license gcc/COPYING gcc/COPYING.LIB
+%doc gcc/README README.fedora
 %{_bindir}/%{target}-*
 %dir /usr/lib/gcc
 %dir /usr/lib/gcc/%{target}
